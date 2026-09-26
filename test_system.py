@@ -8,7 +8,7 @@ import unittest
 from src.preprocessing import clean_user_input, parse_time_to_hours, format_hours_to_time
 from src.scoring import calculate_all_scores
 from src.recommendations import RecommendationEngine
-from src.report_generator import generate_pdf_report
+from src.report_generator import generate_pdf_report, generate_docx_report
 from src.ml_models import LifestyleMLAnalytics
 
 
@@ -75,6 +75,20 @@ class TestHealthSathiSystem(unittest.TestCase):
         out_path = generate_pdf_report(
             user_data=cleaned, scores=scores, recommendations=recs, routine=routine,
             plants=plants, sources_df=self.rec_engine.df_sources, output_pdf_path=test_pdf
+        )
+        self.assertTrue(os.path.exists(out_path))
+        self.assertGreater(os.path.getsize(out_path), 5000)
+
+    def test_docx_report_compilation(self):
+        cleaned = clean_user_input(self.sample_user)
+        scores = calculate_all_scores(cleaned)
+        recs = self.rec_engine.evaluate_recommendations(cleaned)
+        routine = self.rec_engine.generate_personalized_daily_routine(cleaned)
+        plants = self.rec_engine.get_relevant_plants(cleaned)
+        test_docx = "reports/test_verification_report.docx"
+        out_path = generate_docx_report(
+            user_data=cleaned, scores=scores, recommendations=recs, routine=routine,
+            plants=plants, sources_df=self.rec_engine.df_sources, output_docx_path=test_docx
         )
         self.assertTrue(os.path.exists(out_path))
         self.assertGreater(os.path.getsize(out_path), 5000)

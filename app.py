@@ -17,7 +17,7 @@ from src.visualizations import (
     create_wellness_gauge, create_sleep_reference_chart, create_stress_trend_chart,
     create_activity_chart, create_lifestyle_radar_chart, create_weekly_comparison_chart
 )
-from src.report_generator import generate_pdf_report, generate_markdown_report
+from src.report_generator import generate_pdf_report, generate_docx_report, generate_markdown_report
 from src.ml_models import LifestyleMLAnalytics
 
 
@@ -145,7 +145,7 @@ with st.sidebar:
             "📊 Wellness Dashboard",
             "⏰ Personalized Daily Routine",
             "📚 IKS Knowledge & Plants",
-            "📑 My Wellness Report (PDF)",
+            "📑 My Wellness Report (PDF & DOCX)",
             "🔬 Research & Documentation"
         ]
     )
@@ -530,9 +530,9 @@ elif page == "📚 IKS Knowledge & Plants":
 
 
 # PAGE 6: Report Generation
-elif page == "📑 My Wellness Report (PDF)":
+elif page == "📑 My Wellness Report (PDF & DOCX)":
     st.markdown('<h1 class="main-title">Personalized Wellness Report Generator</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-title">Comprehensive 13-Section Wellness Report with Transparent Recommendations and PDF Export</p>', unsafe_allow_html=True)
+    st.markdown('<p class="sub-title">Comprehensive 13-Section Wellness Report with Transparent Recommendations, PDF & Word (.DOCX) Export</p>', unsafe_allow_html=True)
 
     user_clean = clean_user_input(st.session_state.user_profile)
     scores = calculate_all_scores(user_clean)
@@ -545,6 +545,8 @@ elif page == "📑 My Wellness Report (PDF)":
         generate_clicked = st.button("📄 Generate / Refresh My Wellness Report", type="primary", use_container_width=True)
 
     pdf_filename = f"reports/HealthSathi_Report_{user_clean['gender']}_{user_clean['age']}.pdf"
+    docx_filename = f"reports/HealthSathi_Report_{user_clean['gender']}_{user_clean['age']}.docx"
+
     generate_pdf_report(
         user_data=user_clean,
         scores=scores,
@@ -554,17 +556,37 @@ elif page == "📑 My Wellness Report (PDF)":
         sources_df=rec_engine.df_sources,
         output_pdf_path=pdf_filename
     )
+    generate_docx_report(
+        user_data=user_clean,
+        scores=scores,
+        recommendations=recommendations,
+        routine=routine,
+        plants=relevant_plants,
+        sources_df=rec_engine.df_sources,
+        output_docx_path=docx_filename
+    )
 
-    if os.path.exists(pdf_filename):
-        with open(pdf_filename, "rb") as f:
-            pdf_bytes = f.read()
-        st.download_button(
-            label="⬇️ Download Official PDF Wellness Report",
-            data=pdf_bytes,
-            file_name=os.path.basename(pdf_filename),
-            mime="application/pdf",
-            use_container_width=True
-        )
+    c_dl1, c_dl2 = st.columns(2)
+    with c_dl1:
+        if os.path.exists(pdf_filename):
+            with open(pdf_filename, "rb") as f:
+                st.download_button(
+                    label="⬇️ Download Official PDF Wellness Report",
+                    data=f.read(),
+                    file_name=os.path.basename(pdf_filename),
+                    mime="application/pdf",
+                    use_container_width=True
+                )
+    with c_dl2:
+        if os.path.exists(docx_filename):
+            with open(docx_filename, "rb") as f:
+                st.download_button(
+                    label="⬇️ Download Word Document (.DOCX) Report",
+                    data=f.read(),
+                    file_name=os.path.basename(docx_filename),
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    use_container_width=True
+                )
 
     st.markdown("---")
     st.markdown("### 📑 Report Preview (Interactive View)")
@@ -608,14 +630,22 @@ elif page == "📑 My Wellness Report (PDF)":
 
 # PAGE 7: Research & Documentation
 elif page == "🔬 Research & Documentation":
-    st.markdown('<h1 class="main-title">Academic Research Paper & Article</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-title">Complete 14-Section Research Paper & 12-Section Science Article</p>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">Academic Research Paper, Articles & Dataset Archive</h1>', unsafe_allow_html=True)
+    st.markdown('<p class="sub-title">Complete 14-Section Research Paper, 12-Section Science Article, 14-Study Literature Compendium, and End-to-End Dataset Hub</p>', unsafe_allow_html=True)
 
-    t_paper, t_art = st.tabs(["📄 Research Paper (14 Sections)", "📰 Public Science Article (12 Sections)"])
+    t_paper, t_art, t_lit, t_data = st.tabs([
+        "📄 Research Paper (14 Sections)",
+        "📰 Public Science Article (12 Sections)",
+        "📚 Literature Compendium (14 Studies)",
+        "📊 Datasets & Data Dictionary"
+    ])
+
     paper_md_path = "research/research_paper.md"
     article_md_path = "research/article.md"
     paper_docx_path = "research/research_paper.docx"
     article_docx_path = "research/article.docx"
+    compendium_md_path = "research/annotated_literature_compendium.md"
+    compendium_docx_path = "research/annotated_literature_compendium.docx"
 
     with t_paper:
         st.markdown("### Research Paper: *HealthSathi*")
@@ -636,3 +666,44 @@ elif page == "🔬 Research & Documentation":
         if os.path.exists(article_md_path):
             with open(article_md_path, "r", encoding="utf-8") as f:
                 st.markdown(f.read())
+
+    with t_lit:
+        st.markdown("### Annotated Literature & Classical Treatises Compendium (14 Studies)")
+        st.caption("End-to-End Documentation of Ayush Portals, WHO Strategies, Classical Treatises, and Peer-Reviewed Clinical Trials")
+        if os.path.exists(compendium_docx_path):
+            with open(compendium_docx_path, "rb") as f:
+                st.download_button("⬇️ Download Annotated Literature Compendium (.DOCX)", f.read(), "HealthSathi_Annotated_Literature_Compendium.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+        if os.path.exists(compendium_md_path):
+            with open(compendium_md_path, "r", encoding="utf-8") as f:
+                st.markdown(f.read())
+
+    with t_data:
+        st.markdown("### 📊 HealthSathi End-to-End Dataset Hub & Data Dictionary")
+        st.write("Browse and download all benchmark datasets used by the HealthSathi analytics engine:")
+        
+        d_sub1, d_sub2 = st.columns([1, 1])
+        with d_sub1:
+            if os.path.exists("dataset/lifestyle_data.csv"):
+                with open("dataset/lifestyle_data.csv", "rb") as f:
+                    st.download_button("⬇️ Download Lifestyle Dataset (650 Records, CSV)", f.read(), "lifestyle_data.csv", "text/csv")
+            if os.path.exists("dataset/DATA_DICTIONARY.csv"):
+                with open("dataset/DATA_DICTIONARY.csv", "rb") as f:
+                    st.download_button("⬇️ Download Data Dictionary (CSV)", f.read(), "DATA_DICTIONARY.csv", "text/csv")
+        with d_sub2:
+            if os.path.exists("dataset/iks_knowledge.csv"):
+                with open("dataset/iks_knowledge.csv", "rb") as f:
+                    st.download_button("⬇️ Download IKS Knowledge Base (CSV)", f.read(), "iks_knowledge.csv", "text/csv")
+            if os.path.exists("dataset/medicinal_plants.csv"):
+                with open("dataset/medicinal_plants.csv", "rb") as f:
+                    st.download_button("⬇️ Download Medicinal Plants (CSV)", f.read(), "medicinal_plants.csv", "text/csv")
+
+        st.markdown("---")
+        st.markdown("#### 📖 Data Dictionary & Feature Specifications")
+        if os.path.exists("dataset/DATA_DICTIONARY.csv"):
+            df_dict = pd.read_csv("dataset/DATA_DICTIONARY.csv")
+            st.dataframe(df_dict, use_container_width=True)
+
+        if os.path.exists("dataset/DATASET_DOCUMENTATION.md"):
+            with st.expander("📄 View Full Dataset Documentation & Statistical Validation"):
+                with open("dataset/DATASET_DOCUMENTATION.md", "r", encoding="utf-8") as f:
+                    st.markdown(f.read())

@@ -24,7 +24,7 @@ Users input daily habits across sleep, physical activity, nutrition, hydration, 
 
 ---
 
-## 2. Research Paper & Public Science Article
+## 2. Research Paper, Science Article & Literature Compendium
 Included in the `research/` directory:
 - **Research Paper Title:**  
   *“HealthSathi: A Data-Driven Framework for Personalized Wellness Using Indian Knowledge Systems and Ayurvedic Lifestyle Principles”*  
@@ -32,6 +32,20 @@ Included in the `research/` directory:
 - **Public Science Article Title:**  
   *“HealthSathi: Bringing Indian Traditional Wellness Knowledge into a Data-Driven Digital Lifestyle Assistant”*  
   Format: [`research/article.md`](research/article.md) and [`research/article.docx`](research/article.docx) (12-section popular science article).
+- **Annotated Literature Compendium (14 Studies):**  
+  *Comprehensive end-to-end documentation of Ayush portals, WHO strategies, classical treatises, and clinical trials.*  
+  Format: [`research/annotated_literature_compendium.md`](research/annotated_literature_compendium.md) and [`research/annotated_literature_compendium.docx`](research/annotated_literature_compendium.docx).
+
+---
+
+## 3. End-to-End Dataset Hub (`dataset/`)
+All research benchmark datasets and schemas are housed in `dataset/` and `data/`:
+1. `lifestyle_data.csv`: 650 synthetic participant evaluation records with 38 primary and engineered lifestyle features.
+2. `iks_knowledge.csv`: 13 deterministic classical Ayurvedic lifestyle rules with triggers, explainability, and primary citations.
+3. `medicinal_plants.csv`: 10 botanical profiles with classical attributes (*Rasa, Virya, Vipaka*), modern clinical evidence, and safety notes.
+4. `sources.csv`: 12 verified institutional portals, WHO strategies, classical treatises, and clinical trial records.
+5. `DATA_DICTIONARY.csv`: Complete column-by-column schema, data types, units, and mathematical definitions.
+6. `DATASET_DOCUMENTATION.md`: Full statistical distributions, IQR, Pearson correlations, and ML cluster breakdowns.
 
 ---
 
@@ -75,7 +89,7 @@ pip install -r requirements.txt
 ```bash
 python test_system.py
 ```
-*Expected Output: `Ran 6 tests ... OK`*
+*Expected Output: `Ran 7 tests ... OK`*
 
 ### 4. Launch the Streamlit Web Application
 ```bash
@@ -85,14 +99,14 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
-## 6. Streamlit Navigation Walkthrough
+## 7. Streamlit Navigation Walkthrough
 1. **🏠 Overview & Architecture:** Understand the project mission, four-layer architecture, and safety disclaimer.
 2. **📝 Health Profile Input:** Enter your 24+ lifestyle factors or click **Quick Load Demonstration Presets** (e.g. *Corporate Tech Worker*, *College Student*, or *Balanced Practitioner*).
 3. **📊 Wellness Dashboard:** View your 0–100 Lifestyle Wellness Score gauge, 6-Dimension Hexagonal Radar, Sleep vs Reference Bar, 7-Day Stress Dynamics, Activity comparison, and ML Archetype classification.
 4. **⏰ Personalized Daily Routine:** Explore your tailored 24-hour *Dinacharya* schedule mapped to Kapha, Pitta, and Vata diurnal cycles.
 5. **📚 IKS Knowledge & Plants:** Search the 10+ botanical database with scientific binomials, classical Sanskrit names, attributes (*Rasa-Virya-Vipaka*), published research references, and safety notes.
-6. **📑 My Wellness Report (PDF):** Review the 13-section report preview, inspect explainability cards, and download an official formatted PDF report.
-7. **🔬 Research & Documentation:** Read and download the complete academic research paper and public science article in `.docx` and `.md` formats.
+6. **📑 My Wellness Report (PDF & DOCX):** Review the 13-section report preview, inspect explainability cards, and download official formatted **PDF** and **Word Document (.DOCX)** reports.
+7. **🔬 Research & Documentation:** Read and download the complete academic research paper, public science article, annotated literature compendium, and dataset CSV files with data dictionary.
 
 ---
 
