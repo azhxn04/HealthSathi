@@ -1,8 +1,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-.vscode/
-.idea/
-*.swp
-*.bak
+.pytest_cache/
 .DS_Store
+Thumbs.db
+.venv/
+venv/
+ENV/

@@ -24,7 +24,7 @@ Users input daily habits across sleep, physical activity, nutrition, hydration, 
 
 ---
 
-## 2. Research Paper, Science Article & Literature Compendium
+## 2. Research Paper & Public Science Article
 Included in the `research/` directory:
 - **Research Paper Title:**  
   *“HealthSathi: A Data-Driven Framework for Personalized Wellness Using Indian Knowledge Systems and Ayurvedic Lifestyle Principles”*  
@@ -32,20 +32,6 @@ Included in the `research/` directory:
 - **Public Science Article Title:**  
   *“HealthSathi: Bringing Indian Traditional Wellness Knowledge into a Data-Driven Digital Lifestyle Assistant”*  
   Format: [`research/article.md`](research/article.md) and [`research/article.docx`](research/article.docx) (12-section popular science article).
-- **Annotated Literature Compendium (14 Studies):**  
-  *Comprehensive end-to-end documentation of Ayush portals, WHO strategies, classical treatises, and clinical trials.*  
-  Format: [`research/annotated_literature_compendium.md`](research/annotated_literature_compendium.md) and [`research/annotated_literature_compendium.docx`](research/annotated_literature_compendium.docx).
-
----
-
-## 3. End-to-End Dataset Hub (`dataset/`)
-All research benchmark datasets and schemas are housed in `dataset/` and `data/`:
-1. `lifestyle_data.csv`: 650 synthetic participant evaluation records with 38 primary and engineered lifestyle features.
-2. `iks_knowledge.csv`: 13 deterministic classical Ayurvedic lifestyle rules with triggers, explainability, and primary citations.
-3. `medicinal_plants.csv`: 10 botanical profiles with classical attributes (*Rasa, Virya, Vipaka*), modern clinical evidence, and safety notes.
-4. `sources.csv`: 12 verified institutional portals, WHO strategies, classical treatises, and clinical trial records.
-5. `DATA_DICTIONARY.csv`: Complete column-by-column schema, data types, units, and mathematical definitions.
-6. `DATASET_DOCUMENTATION.md`: Full statistical distributions, IQR, Pearson correlations, and ML cluster breakdowns.
 
 ---
 
@@ -89,7 +75,7 @@ pip install -r requirements.txt
 ```bash
 python test_system.py
 ```
-*Expected Output: `Ran 7 tests ... OK`*
+*Expected Output: `Ran 10 tests in ~13s ... OK` (verifies preprocessing, ML scoring, Dinacharya, PDF/DOCX generation, PBKDF2 hashing, RBAC permissions, and DPDP/GDPR audit logging).*
 
 ### 4. Launch the Streamlit Web Application
 ```bash
@@ -99,18 +85,63 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
-## 7. Streamlit Navigation Walkthrough
-1. **🏠 Overview & Architecture:** Understand the project mission, four-layer architecture, and safety disclaimer.
-2. **📝 Health Profile Input:** Enter your 24+ lifestyle factors or click **Quick Load Demonstration Presets** (e.g. *Corporate Tech Worker*, *College Student*, or *Balanced Practitioner*).
-3. **📊 Wellness Dashboard:** View your 0–100 Lifestyle Wellness Score gauge, 6-Dimension Hexagonal Radar, Sleep vs Reference Bar, 7-Day Stress Dynamics, Activity comparison, and ML Archetype classification.
-4. **⏰ Personalized Daily Routine:** Explore your tailored 24-hour *Dinacharya* schedule mapped to Kapha, Pitta, and Vata diurnal cycles.
-5. **📚 IKS Knowledge & Plants:** Search the 10+ botanical database with scientific binomials, classical Sanskrit names, attributes (*Rasa-Virya-Vipaka*), published research references, and safety notes.
-6. **📑 My Wellness Report (PDF & DOCX):** Review the 13-section report preview, inspect explainability cards, and download official formatted **PDF** and **Word Document (.DOCX)** reports.
-7. **🔬 Research & Documentation:** Read and download the complete academic research paper, public science article, annotated literature compendium, and dataset CSV files with data dictionary.
+## 6. Authentication, RBAC & Data Privacy
+
+HealthSathi incorporates a enterprise-grade data privacy and authorization system built in strict alignment with **India's Digital Personal Data Protection (DPDP) Act 2023** and **EU General Data Protection Regulation (GDPR)**:
+
+### Cryptographic Security Standards
+- **Password Hashing:** PBKDF2-HMAC-SHA256 with 120,000 iterations and a 16-byte cryptographically secure random salt generated via `secrets.token_hex`. Plaintext passwords are never stored.
+- **Timing Attack Resistance:** Authentication verification uses constant-time string comparison (`hmac.compare_digest`).
+- **Zero-PII Storage:** The system never collects or stores names, phone numbers, email addresses, government IDs (Aadhaar/SSN), or physical addresses.
+- **Append-Only Audit Log:** All authentication, role escalations, and data exports are logged to `data/security_audit_log.csv` with SHA-256 event traces.
+
+### Role-Based Access Control (RBAC) Matrix
+
+| Capability / View | 🛡️ Admin (`admin`) | 👤 User (`user`) | 👁️ Viewer (`viewer`) |
+| :--- | :---: | :---: | :---: |
+| Overview & System Architecture | ✅ | ✅ | ✅ |
+| Curated IKS Botanical Knowledge Explorer | ✅ | ✅ | ✅ |
+| Research Papers & Compendiums | ✅ | ✅ | ✅ |
+| Data Privacy & Safety Policy | ✅ | ✅ | ✅ |
+| Simulated Cohort Demo Dashboard | ✅ | ✅ | ✅ (Default) |
+| Personal Lifestyle Data Input Form | ✅ | ✅ | ❌ (Auth Required) |
+| Live Personalized Wellness Scoring & ML | ✅ | ✅ | ❌ (Auth Required) |
+| Individualized Dinacharya Daily Routine | ✅ | ✅ | ❌ (Auth Required) |
+| PDF & DOCX Wellness Report Downloads | ✅ | ✅ | ❌ (Auth Required) |
+| Data Portability Export (JSON Package) | ✅ | ✅ | ❌ |
+| Session Right-to-Erasure Purge | ✅ | ✅ | ❌ |
+| User Directory & Role Management | ✅ | ❌ | ❌ |
+| Append-Only Security Telemetry & Audit Logs | ✅ | ❌ | ❌ |
+| IKS Dataset SHA-256 Integrity Verification | ✅ | ❌ | ❌ |
+
+### Seed Demonstration Accounts (Pre-configured)
+The application includes pre-seeded demonstration accounts for rapid evaluation (or you can register new accounts in the sidebar):
+
+| Username | Password | Default Role | Intended Evaluation Purpose |
+| :--- | :--- | :--- | :--- |
+| `admin` | `Admin@HealthSathi2026` | `admin` | Security audit, telemetry, user management, hash integrity |
+| `demo_user` | `User@HealthSathi2026` | `user` | Full personal lifestyle analytics, scoring, Dinacharya, reports |
+| `viewer` | `Viewer@HealthSathi2026` | `viewer` | Read-only auditor, simulated cohort archetypes, safe browsing |
 
 ---
 
-## 7. Key Institutional References & Grounding
+## 7. Streamlit Navigation Walkthrough
+
+HealthSathi dynamically adapts navigation options based on the active authenticated role:
+1. **🏠 Overview & Architecture:** Understand the project mission, four-layer architecture, and safety disclaimer.
+2. **📝 Health Profile Input:** Enter your 24+ lifestyle factors or click **Quick Load Demonstration Presets** (e.g. *Corporate Tech Worker*, *College Student*, or *Balanced Practitioner*). *(Available to User & Admin)*
+3. **📊 Wellness Dashboard:** View your 0–100 Lifestyle Wellness Score gauge, 6-Dimension Hexagonal Radar, Sleep vs Reference Bar, 7-Day Stress Dynamics, Activity comparison, and ML Archetype classification. *(Available to User & Admin)*
+4. **👁️ Demo Wellness Dashboard:** Simulated cohort visualization enabling external auditors and viewers to explore system capabilities without exposing private data. *(Tailored for Viewer)*
+5. **⏰ Personalized Daily Routine:** Explore your tailored 24-hour *Dinacharya* schedule mapped to Kapha, Pitta, and Vata diurnal cycles.
+6. **📚 IKS Knowledge & Plants:** Search the 10+ botanical database with scientific binomials, classical Sanskrit names, attributes (*Rasa-Virya-Vipaka*), published research references, and safety notes.
+7. **📑 My Wellness Report:** Review the 13-section report preview, inspect explainability cards, and download official PDF and DOCX reports. *(Available to User & Admin)*
+8. **🔬 Research & Documentation:** Read and download the complete academic research paper, public science article, and annotated literature compendium.
+9. **🛡️ Admin & Security Console:** Live security telemetry, append-only audit trail inspection, user RBAC management, IKS cryptographic hash verification, and DPDP/GDPR compliance checklist. *(Admin exclusive)*
+10. **🔒 Data Privacy & Safety Policy:** Complete legal disclosure regarding DPDP Act 2023 compliance, GDPR articles, zero-PII principles, and non-diagnostic safety boundaries.
+
+---
+
+## 8. Key Institutional References & Grounding
 - **Ministry of Ayush (Govt. of India) — Ayush Research Portal:** https://arp.ayush.gov.in/researchabout
 - **WHO Global Traditional Medicine Strategy 2025–2034:** https://www.who.int/teams/who-global-traditional-medicine-centre/traditional-medicine-strategy-2025-2034
 - **WHO Traditional, Complementary and Integrative Medicine:** https://www.who.int/teams/integrated-health-services/traditional-complementary-and-integrative-medicine/global-strategies
@@ -119,5 +150,6 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
-## 8. License & Ethics
+## 9. License & Ethics
 HealthSathi is released under the **MIT Open Source License**. Developed for academic evaluation, cultural digital preservation, and educational health literacy. Always consult qualified healthcare professionals for medical diagnoses or clinical treatments.
+
