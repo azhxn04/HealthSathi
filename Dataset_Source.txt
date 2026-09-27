@@ -1,0 +1,68 @@
+================================================================================
+HEALTHSATHI DATASET SOURCE & PROVENANCE METADATA
+================================================================================
+
+1. DATASET IDENTIFICATION
+   Dataset Name: HealthSathi Lifestyle & IKS Wellness Analytics Dataset
+   File Name: dataset_650.csv (lifestyle_data.csv)
+   Version: 2.0.0
+   Total Records: 650 individual lifestyle cohort profiles
+   Target Variable: wellness_category ('Needs Attention (Hina Vihara)', 'Moderate (Madhyama)', 'Good (Prasanna)', 'Excellent (Svastha)')
+   Primary Key: participant_id (HS-SYNTH-0001 to HS-SYNTH-0650)
+
+2. DATA ORIGIN & GENERATION METHODOLOGY
+   Generator: HealthSathi Synthetic Lifestyle Generator (generate_lifestyle_dataset.py)
+   Source Base: Modeled after Indian ICMR lifestyle guidelines, WHO physical activity recommendations,
+               Ministry of Ayush research benchmarks, and Charaka Samhita Dinacharya circadian cycles.
+   Collection Period: Q1 2024 - Q3 2026 (Simulated Multi-Cohort Diurnal Cycle)
+   Geography: India (Demographic distributions, meal timing conventions, and diurnal cycles aligned with Indian Standard Time)
+
+3. FEATURE DICTIONARY & ATTRIBUTES
+   - participant_id (String): Unique identifier
+   - age (Integer): Age in years (18 - 65)
+   - gender (Categorical): 'Female', 'Male', 'Other'
+   - height_cm (Float): Standing height in centimeters (140.0 - 195.0)
+   - weight_kg (Float): Body mass in kilograms (40.0 - 110.0)
+   - bmi (Float): Body Mass Index (weight / height_m^2)
+   - bmi_category (Categorical): 'Underweight', 'Normal', 'Overweight', 'Obesity Range'
+   - occupation (Categorical): 'Student', 'Working Professional (IT/Corporate)', 'Healthcare Worker', 'Educator / Academic', 'Self-Employed / Business', 'Homemaker', 'Freelancer / Creative'
+   - sleep_duration_hrs (Float): Nocturnal sleep duration in hours (3.0 - 10.5)
+   - sleep_time_dec (Float): Decimal bedtime hour (0.0 - 24.0, e.g. 23.5 for 11:30 PM)
+   - wake_up_time_dec (Float): Decimal wake hour (0.0 - 24.0, e.g. 6.5 for 06:30 AM)
+   - sleep_quality (Categorical): 'Good', 'Moderate', 'Poor'
+   - work_study_hrs (Float): Daily work or study duration (0.0 - 14.0)
+   - screen_time_hrs (Float): Daily digital screen exposure in hours (1.0 - 14.0)
+   - physical_activity_min (Float): Dedicated daily movement/exercise in minutes (0.0 - 120.0)
+   - water_intake_liters (Float): Daily hydration in liters (0.8 - 5.0)
+   - meal_regularity (Categorical): 'Regular', 'Irregular'
+   - outdoor_time_min (Float): Daily natural sunlight exposure in minutes (0.0 - 90.0)
+   - stress_level (Integer): Self-reported psychological tension (1 to 10 scale)
+   - mood (Categorical): 'Good', 'Neutral', 'Low'
+   - relaxation_activity (Boolean): Daily mindfulness/yoga/breathing practice (True/False)
+   - breakfast_regular (Boolean): Consistent morning meal consumption (True/False)
+   - fruit_veg_intake (Categorical): 'Low', 'Medium', 'High'
+   - processed_food_freq (Categorical): 'Low', 'Medium', 'High'
+   - caffeine_freq (Categorical): 'Low', 'Medium', 'High'
+   - meal_timing_consistency (Categorical): 'Regular', 'Irregular'
+   - health_conditions (String): Self-reported context (e.g., 'None', 'Migraine', 'Hypertension', 'Diabetes', 'Digestive problems')
+   - sleep_score (Float): Derived circadian rest score (0.0 - 100.0)
+   - activity_score (Float): Derived physical movement score (0.0 - 100.0)
+   - stress_score (Float): Derived autonomic balance score (0.0 - 100.0)
+   - hydration_score (Float): Derived fluid intake calibration score (0.0 - 100.0)
+   - routine_score (Float): Derived Dinacharya adherence score (0.0 - 100.0)
+   - nutrition_score (Float): Derived Ahara Vidhi discipline score (0.0 - 100.0)
+   - lifestyle_wellness_score (Float): Composite multi-attribute wellness index (0.0 - 100.0)
+   - wellness_category (Categorical): Target Class ('Needs Attention (Hina Vihara)', 'Moderate (Madhyama)', 'Good (Prasanna)', 'Excellent (Svastha)')
+
+4. PREPROCESSING & CLEANING
+   - Missing Values: 0 null records (100% complete dataset across all 650 records)
+   - Outlier Handling: Clipped score ranges to realistic boundaries (0.0 to 100.0)
+   - Scaling: Standardized numerical features (StandardScaler) for Logistic Regression, SVC, and K-Means
+   - Categorical Encoding: One-Hot Encoding with first category dropped to prevent multicollinearity
+   - Stratification: 80-20 Train-Test split stratified by wellness_category (520 train, 130 holdout test)
+
+5. USAGE RIGHTS & LICENSING
+   License: Creative Commons Attribution 4.0 International (CC BY 4.0) / Academic Research Open Access
+   Intended Use: Academic mini-project research, Machine Learning evaluation, HealthSathi system verification.
+   Accessible Link: https://github.com/azhxn04/HealthSathi
+================================================================================

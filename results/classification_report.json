@@ -1,0 +1,39 @@
+{
+  "Needs Attention (Hina Vihara)": {
+    "precision": 0.8857142857142857,
+    "recall": 0.9117647058823529,
+    "f1-score": 0.8985507246376812,
+    "support": 34.0
+  },
+  "Moderate (Madhyama)": {
+    "precision": 0.7560975609756098,
+    "recall": 0.8378378378378378,
+    "f1-score": 0.7948717948717948,
+    "support": 37.0
+  },
+  "Good (Prasanna)": {
+    "precision": 0.7222222222222222,
+    "recall": 0.4482758620689655,
+    "f1-score": 0.5531914893617021,
+    "support": 29.0
+  },
+  "Excellent (Svastha)": {
+    "precision": 0.75,
+    "recall": 0.9,
+    "f1-score": 0.8181818181818182,
+    "support": 30.0
+  },
+  "accuracy": 0.7846153846153846,
+  "macro avg": {
+    "precision": 0.7785085172280294,
+    "recall": 0.774469601447289,
+    "f1-score": 0.7661989567632491,
+    "support": 130.0
+  },
+  "weighted avg": {
+    "precision": 0.7810333839602132,
+    "recall": 0.7846153846153846,
+    "f1-score": 0.7734537598837037,
+    "support": 130.0
+  }
+}

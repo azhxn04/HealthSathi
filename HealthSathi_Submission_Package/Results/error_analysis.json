@@ -1,0 +1,30 @@
+[
+  {
+    "Class": "Needs Attention (Hina Vihara)",
+    "Total_Samples": 34,
+    "Correct": 31,
+    "Misclassified": 3,
+    "Class_Error_Rate": 0.0882
+  },
+  {
+    "Class": "Moderate (Madhyama)",
+    "Total_Samples": 37,
+    "Correct": 31,
+    "Misclassified": 6,
+    "Class_Error_Rate": 0.1622
+  },
+  {
+    "Class": "Good (Prasanna)",
+    "Total_Samples": 29,
+    "Correct": 13,
+    "Misclassified": 16,
+    "Class_Error_Rate": 0.5517
+  },
+  {
+    "Class": "Excellent (Svastha)",
+    "Total_Samples": 30,
+    "Correct": 27,
+    "Misclassified": 3,
+    "Class_Error_Rate": 0.1
+  }
+]

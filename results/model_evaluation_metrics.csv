@@ -1,0 +1,4 @@
+Model,Accuracy,Precision (Macro),Recall (Macro),F1-Score (Macro),F1-Score (Weighted)
+Multinomial Logistic Regression,0.8846,0.8827,0.8813,0.8811,0.8835
+Support Vector Classifier (RBF),0.8385,0.836,0.8295,0.825,0.8316
+Random Forest Classifier,0.7846,0.7785,0.7745,0.7662,0.7735

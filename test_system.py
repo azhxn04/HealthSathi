@@ -11,6 +11,10 @@ from src.scoring import calculate_all_scores
 from src.recommendations import RecommendationEngine
 from src.report_generator import generate_pdf_report, generate_docx_report
 from src.ml_models import LifestyleMLAnalytics
+from src.visualizations import (
+    create_wellness_gauge, create_sleep_reference_chart, create_stress_trend_chart,
+    create_activity_chart, create_lifestyle_radar_chart, create_weekly_comparison_chart
+)
 from src.security import (
     hash_password, verify_password, UserManager, check_permission,
     export_user_data_package, SecurityAuditLogger
@@ -134,6 +138,31 @@ class TestHealthSathiSystem(unittest.TestCase):
         self.assertIn("compliance", pkg_json)
         self.assertIn("DPDP Act 2023", pkg_json)
 
+    def test_visualizations(self):
+        cleaned = clean_user_input(self.sample_user)
+        scores = calculate_all_scores(cleaned)
+        
+        # Test create_wellness_gauge with 1, 2, and 3 parameters
+        fig1 = create_wellness_gauge(scores["overall_wellness_score"])
+        self.assertIsNotNone(fig1)
+        fig2 = create_wellness_gauge(scores["overall_wellness_score"], scores["wellness_band"])
+        self.assertIsNotNone(fig2)
+        fig3 = create_wellness_gauge(scores["overall_wellness_score"], scores["wellness_band"], scores["wellness_color"])
+        self.assertIsNotNone(fig3)
+        
+        # Test other charts
+        fig_radar = create_lifestyle_radar_chart(scores)
+        self.assertIsNotNone(fig_radar)
+        fig_sleep = create_sleep_reference_chart(cleaned["sleep_duration_hrs"])
+        self.assertIsNotNone(fig_sleep)
+        fig_stress = create_stress_trend_chart(cleaned["stress_level"])
+        self.assertIsNotNone(fig_stress)
+        fig_act = create_activity_chart(cleaned["physical_activity_min"], cleaned["outdoor_time_min"])
+        self.assertIsNotNone(fig_act)
+        fig_weekly = create_weekly_comparison_chart(scores)
+        self.assertIsNotNone(fig_weekly)
+
 
 if __name__ == "__main__":
     unittest.main()
+

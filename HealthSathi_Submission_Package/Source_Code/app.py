@@ -894,38 +894,28 @@ elif page == "📑 My Wellness Report (PDF & DOCX)":
 # ================= PAGE 7: RESEARCH & DOCUMENTATION =================
 elif page == "🔬 Research & Documentation":
     st.markdown('<h1 class="main-title">Academic Research Paper, Articles & Dataset Archive</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-title">Complete 18-Section Research Article, Public Science Article, Literature Compendium, and University Submission Package</p>', unsafe_allow_html=True)
+    st.markdown('<p class="sub-title">Complete 14-Section Research Paper, 12-Section Science Article, 14-Study Literature Compendium, and End-to-End Dataset Hub</p>', unsafe_allow_html=True)
 
-    t_paper, t_art, t_lit, t_data, t_pkg = st.tabs([
-        "📄 Research Article (18 Sections)",
+    t_paper, t_art, t_lit, t_data = st.tabs([
+        "📄 Research Paper (14 Sections)",
         "📰 Public Science Article (12 Sections)",
         "📚 Literature Compendium (14 Studies)",
-        "📊 Datasets & Data Dictionary",
-        "📦 University Submission Package"
+        "📊 Datasets & Data Dictionary"
     ])
 
     paper_md_path = "research/research_paper.md"
     article_md_path = "research/article.md"
-    paper_docx_path = "HealthSathi_Submission_Package/Research_Article.docx"
-    paper_pdf_path = "HealthSathi_Submission_Package/Research_Article.pdf"
+    paper_docx_path = "research/research_paper.docx"
     article_docx_path = "research/article.docx"
     compendium_md_path = "research/annotated_literature_compendium.md"
     compendium_docx_path = "research/annotated_literature_compendium.docx"
 
     with t_paper:
-        st.markdown("### Research Article: *HealthSathi*")
+        st.markdown("### Research Paper: *HealthSathi*")
         st.caption("Title: *HealthSathi: A Data-Driven Framework for Personalized Wellness Using Indian Knowledge Systems and Ayurvedic Lifestyle Principles*")
-        
-        col_p1, col_p2 = st.columns(2)
-        with col_p1:
-            if os.path.exists(paper_docx_path):
-                with open(paper_docx_path, "rb") as f:
-                    st.download_button("⬇️ Download Full Article (.DOCX)", f.read(), "HealthSathi_Research_Article.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", use_container_width=True)
-        with col_p2:
-            if os.path.exists(paper_pdf_path):
-                with open(paper_pdf_path, "rb") as f:
-                    st.download_button("⬇️ Download Full Article (.PDF)", f.read(), "HealthSathi_Research_Article.pdf", "application/pdf", use_container_width=True)
-
+        if os.path.exists(paper_docx_path):
+            with open(paper_docx_path, "rb") as f:
+                st.download_button("⬇️ Download Full Research Paper (.DOCX)", f.read(), "HealthSathi_Research_Paper.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
         if os.path.exists(paper_md_path):
             with open(paper_md_path, "r", encoding="utf-8") as f:
                 st.markdown(f.read())
@@ -980,64 +970,6 @@ elif page == "🔬 Research & Documentation":
             with st.expander("📄 View Full Dataset Documentation & Statistical Validation"):
                 with open("dataset/DATASET_DOCUMENTATION.md", "r", encoding="utf-8") as f:
                     st.markdown(f.read())
-
-    with t_pkg:
-        st.markdown("### 📦 Official University Submission Package (Section 18 Compliant)")
-        st.caption("Evaluation Schedule: **Tuesday, 29 September 2026, 12:30 PM** | Presentation: 7 min | Q&A / Viva: 3 min")
-
-        zip_pkg_path = "HealthSathi_Submission_Package.zip"
-        if os.path.exists(zip_pkg_path):
-            with open(zip_pkg_path, "rb") as f:
-                st.download_button(
-                    label="🎁 Download Complete Submission Package (All-in-One .ZIP)",
-                    data=f.read(),
-                    file_name="HealthSathi_Submission_Package.zip",
-                    mime="application/zip",
-                    type="primary",
-                    use_container_width=True
-                )
-
-        st.markdown("---")
-        st.markdown("#### 📁 Individual Submission Artifacts (Section 18 Requirements):")
-        cp1, cp2, cp3 = st.columns(3)
-        with cp1:
-            if os.path.exists("HealthSathi_Submission_Package/Research_Article.docx"):
-                with open("HealthSathi_Submission_Package/Research_Article.docx", "rb") as f:
-                    st.download_button("1. Research_Article.docx", f.read(), "HealthSathi_Research_Article.docx", use_container_width=True)
-            if os.path.exists("HealthSathi_Submission_Package/Research_Article.pdf"):
-                with open("HealthSathi_Submission_Package/Research_Article.pdf", "rb") as f:
-                    st.download_button("2. Research_Article.pdf", f.read(), "HealthSathi_Research_Article.pdf", use_container_width=True)
-        with cp2:
-            if os.path.exists("HealthSathi_Submission_Package/Similarity_Report.pdf"):
-                with open("HealthSathi_Submission_Package/Similarity_Report.pdf", "rb") as f:
-                    st.download_button("3. Similarity_Report.pdf (2.8%)", f.read(), "HealthSathi_Similarity_Report.pdf", use_container_width=True)
-            if os.path.exists("HealthSathi_Submission_Package/AI_Assistance_Declaration.pdf"):
-                with open("HealthSathi_Submission_Package/AI_Assistance_Declaration.pdf", "rb") as f:
-                    st.download_button("4. AI_Assistance_Declaration.pdf", f.read(), "HealthSathi_AI_Declaration.pdf", use_container_width=True)
-        with cp3:
-            if os.path.exists("HealthSathi_Submission_Package/Dataset_Source.txt"):
-                with open("HealthSathi_Submission_Package/Dataset_Source.txt", "rb") as f:
-                    st.download_button("5. Dataset_Source.txt", f.read(), "HealthSathi_Dataset_Source.txt", use_container_width=True)
-            if os.path.exists("HealthSathi_Submission_Package/Results/model_evaluation_metrics.csv"):
-                with open("HealthSathi_Submission_Package/Results/model_evaluation_metrics.csv", "rb") as f:
-                    st.download_button("8. ML Results (Metrics CSV)", f.read(), "model_evaluation_metrics.csv", use_container_width=True)
-
-        st.markdown(
-            """
-            | Item # | Required Submission File | Status | Verification & Academic Target |
-            | :---: | :--- | :---: | :--- |
-            | **1** | `Research_Article.docx` | Verified ✅ | Times New Roman 11pt, 1.15 spacing, justified, 14pt/12pt bold headings, 18 sections |
-            | **2** | `Research_Article.pdf` | Verified ✅ | Publication-quality compiled PDF with real figures & tables |
-            | **3** | `Similarity_Report.pdf` | Verified ✅ | **2.8% Similarity Index** (Target: &lt;5.0%, PASSED) |
-            | **4** | `AI_Assistance_Declaration.pdf` | Verified ✅ | Formal declaration of ethical AI tool usage & author oversight |
-            | **5** | `Dataset_Source.txt` | Verified ✅ | Full dataset identification, provenance, attributes, and CC BY 4.0 license |
-            | **6** | `Dataset/` Directory | Verified ✅ | Complete CSV files with 650 records & data dictionary |
-            | **7** | `Source_Code/` Directory | Verified ✅ | Complete Python application source code & requirements.txt |
-            | **8** | `Results/` Directory | Verified ✅ | Real confusion matrix, feature importances, and model metrics |
-            """
-        )
-
-
 
 
 # ================= PAGE 8: ADMIN & SECURITY CONSOLE (ADMIN ONLY) =================

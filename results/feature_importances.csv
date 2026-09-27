@@ -1,0 +1,36 @@
+Feature,Importance
+sleep_time_dec,0.15715824400479717
+physical_activity_min,0.10955388700720364
+wake_up_time_dec,0.0823462833206464
+stress_level,0.07852106311084169
+sleep_duration_hrs,0.06853134005941344
+outdoor_time_min,0.06215567979910006
+screen_time_hrs,0.06062511261811877
+work_study_hrs,0.04540292929814322
+water_intake_liters,0.03651056292211969
+weight_kg,0.03177765003773184
+age,0.027481599497441063
+processed_food_freq_Low,0.02652604611864881
+meal_timing_consistency_Regular,0.026198139010662168
+bmi,0.025004150644124083
+height_cm,0.02402259134521415
+breakfast_regular_True,0.01706348290039004
+meal_regularity_Regular,0.014620368346332966
+fruit_veg_intake_Low,0.012214150295826297
+fruit_veg_intake_Medium,0.011608394486956108
+processed_food_freq_Medium,0.009723472176909909
+caffeine_freq_Low,0.00821429148726696
+relaxation_activity_True,0.007108447745934591
+occupation_Student,0.006238844932202247
+occupation_Homemaker,0.005767812383122605
+occupation_Working Professional (IT/Corporate),0.005376866789909419
+mood_Low,0.005300346533388008
+sleep_quality_Moderate,0.005153649903853996
+sleep_quality_Poor,0.005124319956188271
+mood_Neutral,0.004925256082148748
+gender_Male,0.004593917425466671
+caffeine_freq_Medium,0.0041672031991460134
+occupation_Freelancer / Creative,0.004101805770250863
+occupation_Self-Employed / Business,0.003526673394739495
+occupation_Healthcare Worker,0.0027789104174452276
+gender_Other,0.000576506978315525
