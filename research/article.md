@@ -1,6 +1,6 @@
 # HealthSathi: Bringing Indian Traditional Wellness Knowledge into a Data-Driven Digital Lifestyle Assistant
 
-**Author:** HealthSathi Development Team  
+**Authors:** Azhan (Roll No: 24315A0057) & Ayan (Roll No: 24315A0056) — HealthSathi Project Team  
 **Publication Type:** Explanatory Public Science & Technology Feature  
 **Date:** September 2026  
 

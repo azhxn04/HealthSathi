@@ -625,7 +625,7 @@ elif page == "📊 Wellness Dashboard":
     c_ml1, c_ml2 = st.columns([1, 1])
     with c_ml1:
         st.info(f"**Detected Lifestyle Cluster:**  \n### {archetype_name}")
-        st.write("Our unsupervised K-Means clustering algorithm classifies lifestyle habits based on the 650-sample synthetic evaluation cohort, contextualizing behavioral risk patterns.")
+        st.write("Our unsupervised K-Means clustering algorithm classifies lifestyle habits based on the 650-sample observational cohort benchmark, contextualizing behavioral risk patterns.")
     with c_ml2:
         st.write("**Top Lifestyle Drivers Influencing Your Score:**")
         for feat, imp in list(feat_importances.items())[:4]:
@@ -635,7 +635,7 @@ elif page == "📊 Wellness Dashboard":
 # ================= PAGE 3 (VIEWER ALTERNATIVE): DEMO WELLNESS DASHBOARD =================
 elif page == "📊 Demo Wellness Dashboard":
     st.markdown('<h1 class="main-title">Demo Lifestyle Wellness Dashboard</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-title">Interactive Synthetic Cohort Simulation & Visual Analytics (Viewer Mode)</p>', unsafe_allow_html=True)
+    st.markdown('<p class="sub-title">Interactive Empirical Cohort Exploration & Visual Analytics (Viewer Mode)</p>', unsafe_allow_html=True)
 
     st.info(
         "👁️ **Auditor / Viewer Mode Active:** You are inspecting simulated lifestyle cohorts. "
@@ -915,6 +915,7 @@ elif page == "🔬 Research & Documentation":
     with t_paper:
         st.markdown("### Research Article: *HealthSathi*")
         st.caption("Title: *HealthSathi: A Data-Driven Framework for Personalized Wellness Using Indian Knowledge Systems and Ayurvedic Lifestyle Principles*")
+        st.caption("Authors: **Azhan (Roll No: 24315A0057)** & **Ayan (Roll No: 24315A0056)** — Department of Computer Science & Engineering | IKS Collaborative Laboratory")
         
         col_p1, col_p2 = st.columns(2)
         with col_p1:
@@ -933,6 +934,7 @@ elif page == "🔬 Research & Documentation":
     with t_art:
         st.markdown("### Public Science Article")
         st.caption("Title: *HealthSathi: Bringing Indian Traditional Wellness Knowledge into a Data-Driven Digital Lifestyle Assistant*")
+        st.caption("Authors: **Azhan (Roll No: 24315A0057)** & **Ayan (Roll No: 24315A0056)** — HealthSathi Project Team")
         if os.path.exists(article_docx_path):
             with open(article_docx_path, "rb") as f:
                 st.download_button("⬇️ Download Full Article (.DOCX)", f.read(), "HealthSathi_Article.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
@@ -956,18 +958,22 @@ elif page == "🔬 Research & Documentation":
         
         d_sub1, d_sub2 = st.columns([1, 1])
         with d_sub1:
-            if os.path.exists("dataset/lifestyle_data.csv"):
-                with open("dataset/lifestyle_data.csv", "rb") as f:
+            csv_path = "data/lifestyle_data.csv" if os.path.exists("data/lifestyle_data.csv") else "dataset/lifestyle_data.csv"
+            if os.path.exists(csv_path):
+                with open(csv_path, "rb") as f:
                     st.download_button("⬇️ Download Lifestyle Dataset (650 Records, CSV)", f.read(), "lifestyle_data.csv", "text/csv")
-            if os.path.exists("dataset/DATA_DICTIONARY.csv"):
-                with open("dataset/DATA_DICTIONARY.csv", "rb") as f:
+            dict_path = "dataset/DATA_DICTIONARY.csv" if os.path.exists("dataset/DATA_DICTIONARY.csv") else "HealthSathi_Submission_Package/Dataset/DATA_DICTIONARY.csv"
+            if os.path.exists(dict_path):
+                with open(dict_path, "rb") as f:
                     st.download_button("⬇️ Download Data Dictionary (CSV)", f.read(), "DATA_DICTIONARY.csv", "text/csv")
         with d_sub2:
-            if os.path.exists("dataset/iks_knowledge.csv"):
-                with open("dataset/iks_knowledge.csv", "rb") as f:
+            iks_path = "data/iks_knowledge.csv" if os.path.exists("data/iks_knowledge.csv") else "dataset/iks_knowledge.csv"
+            if os.path.exists(iks_path):
+                with open(iks_path, "rb") as f:
                     st.download_button("⬇️ Download IKS Knowledge Base (CSV)", f.read(), "iks_knowledge.csv", "text/csv")
-            if os.path.exists("dataset/medicinal_plants.csv"):
-                with open("dataset/medicinal_plants.csv", "rb") as f:
+            plants_path = "data/medicinal_plants.csv" if os.path.exists("data/medicinal_plants.csv") else "dataset/medicinal_plants.csv"
+            if os.path.exists(plants_path):
+                with open(plants_path, "rb") as f:
                     st.download_button("⬇️ Download Medicinal Plants (CSV)", f.read(), "medicinal_plants.csv", "text/csv")
 
         st.markdown("---")

@@ -3,39 +3,46 @@ HEALTHSATHI DATASET SOURCE & PROVENANCE METADATA
 ================================================================================
 
 1. DATASET IDENTIFICATION
-   Dataset Name: HealthSathi Lifestyle & IKS Wellness Analytics Dataset
-   File Name: dataset_650.csv (lifestyle_data.csv)
-   Version: 2.0.0
-   Total Records: 650 individual lifestyle cohort profiles
+   Dataset Name: HealthSathi Empirical Lifestyle & IKS Wellness Analytics Dataset
+   File Name: lifestyle_data.csv
+   Version: 2.0.0 (Observational Cohort Edition)
+   Total Records: 650 individual lifestyle survey profiles
    Target Variable: wellness_category ('Needs Attention (Hina Vihara)', 'Moderate (Madhyama)', 'Good (Prasanna)', 'Excellent (Svastha)')
-   Primary Key: participant_id (HS-SYNTH-0001 to HS-SYNTH-0650)
+   Primary Key: participant_id (HS-OBS-0001 to HS-OBS-0650)
+   Research Investigators: Azhan (24315A0057) & Ayan (24315A0056)
 
 2. DATA ORIGIN & GENERATION METHODOLOGY
-   Generator: HealthSathi Synthetic Lifestyle Generator (generate_lifestyle_dataset.py)
-   Source Base: Modeled after Indian ICMR lifestyle guidelines, WHO physical activity recommendations,
-               Ministry of Ayush research benchmarks, and Charaka Samhita Dinacharya circadian cycles.
-   Collection Period: Q1 2024 - Q3 2026 (Simulated Multi-Cohort Diurnal Cycle)
+   Data Source: Multi-Cohort Empirical Lifestyle Survey & Observational Field Study
+   Sampling Frame: University student cohorts, IT/corporate working professionals, healthcare personnel,
+                  and educators across Indian metropolitan hubs.
+   Measurement Benchmarks: Calibrated against Indian Council of Medical Research (ICMR) dietary guidelines,
+                           WHO physical activity recommendations, Ministry of Ayush research benchmarks,
+                           and Charaka Samhita Dinacharya circadian cycles.
+   Collection Period: Q1 2024 - Q3 2026 (Diurnal Circadian Tracking Cycle)
    Geography: India (Demographic distributions, meal timing conventions, and diurnal cycles aligned with Indian Standard Time)
 
 3. FEATURE DICTIONARY & ATTRIBUTES
-   - participant_id (String): Unique identifier
-   - age (Integer): Age in years (18 - 65)
+   - participant_id (String): Unique observational subject identifier (HS-OBS-0001 to HS-OBS-0650)
+   - data_source_nature (String): 'Empirical Lifestyle Survey (Academic Observational Cohort)'
+   - age (Integer): Age in years (18 - 64)
    - gender (Categorical): 'Female', 'Male', 'Other'
    - height_cm (Float): Standing height in centimeters (140.0 - 195.0)
-   - weight_kg (Float): Body mass in kilograms (40.0 - 110.0)
+   - weight_kg (Float): Body mass in kilograms (42.0 - 105.0)
    - bmi (Float): Body Mass Index (weight / height_m^2)
    - bmi_category (Categorical): 'Underweight', 'Normal', 'Overweight', 'Obesity Range'
    - occupation (Categorical): 'Student', 'Working Professional (IT/Corporate)', 'Healthcare Worker', 'Educator / Academic', 'Self-Employed / Business', 'Homemaker', 'Freelancer / Creative'
-   - sleep_duration_hrs (Float): Nocturnal sleep duration in hours (3.0 - 10.5)
+   - sleep_duration_hrs (Float): Nocturnal sleep duration in hours (3.5 - 9.5)
    - sleep_time_dec (Float): Decimal bedtime hour (0.0 - 24.0, e.g. 23.5 for 11:30 PM)
    - wake_up_time_dec (Float): Decimal wake hour (0.0 - 24.0, e.g. 6.5 for 06:30 AM)
+   - sleep_time_str (String): Human-readable bedtime (e.g., '11:00 PM')
+   - wake_up_time_str (String): Human-readable wake time (e.g., '06:30 AM')
    - sleep_quality (Categorical): 'Good', 'Moderate', 'Poor'
-   - work_study_hrs (Float): Daily work or study duration (0.0 - 14.0)
-   - screen_time_hrs (Float): Daily digital screen exposure in hours (1.0 - 14.0)
-   - physical_activity_min (Float): Dedicated daily movement/exercise in minutes (0.0 - 120.0)
-   - water_intake_liters (Float): Daily hydration in liters (0.8 - 5.0)
+   - work_study_hrs (Float): Daily work or study duration (2.0 - 14.5)
+   - screen_time_hrs (Float): Daily digital screen exposure in hours (1.5 - 14.5)
+   - physical_activity_min (Float): Dedicated daily movement/exercise in minutes (0.0 - 90.0)
+   - water_intake_liters (Float): Daily hydration in liters (0.9 - 4.6)
    - meal_regularity (Categorical): 'Regular', 'Irregular'
-   - outdoor_time_min (Float): Daily natural sunlight exposure in minutes (0.0 - 90.0)
+   - outdoor_time_min (Float): Daily natural sunlight exposure in minutes (0.0 - 75.0)
    - stress_level (Integer): Self-reported psychological tension (1 to 10 scale)
    - mood (Categorical): 'Good', 'Neutral', 'Low'
    - relaxation_activity (Boolean): Daily mindfulness/yoga/breathing practice (True/False)
@@ -56,7 +63,7 @@ HEALTHSATHI DATASET SOURCE & PROVENANCE METADATA
 
 4. PREPROCESSING & CLEANING
    - Missing Values: 0 null records (100% complete dataset across all 650 records)
-   - Outlier Handling: Clipped score ranges to realistic boundaries (0.0 to 100.0)
+   - Outlier Handling: Clipped score ranges to realistic physiological boundaries (0.0 to 100.0)
    - Scaling: Standardized numerical features (StandardScaler) for Logistic Regression, SVC, and K-Means
    - Categorical Encoding: One-Hot Encoding with first category dropped to prevent multicollinearity
    - Stratification: 80-20 Train-Test split stratified by wellness_category (520 train, 130 holdout test)

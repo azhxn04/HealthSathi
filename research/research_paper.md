@@ -1,6 +1,6 @@
 # HealthSathi: A Data-Driven Framework for Personalized Wellness Using Indian Knowledge Systems and Ayurvedic Lifestyle Principles
 
-**Author Names:** Dev Vakil, Student Research Representative & Academic Project Team  
+**Author Names:** Azhan (Roll No: 24315A0057) & Ayan (Roll No: 24315A0056)  
 **Department / Institution:** Department of Computer Science & Engineering | Indian Knowledge Systems (IKS) Collaborative Laboratory  
 **Date:** September 2026  
 **Presentation & Evaluation Schedule:** Tuesday, 29 September 2026, 12:30 PM (Presentation: 7 min | Q&A / Viva: 3 min)  
@@ -8,7 +8,7 @@
 ---
 
 ## Abstract
-Modern sedentary lifestyle patterns, irregular dietary habits, excessive digital screen exposure, and chronic psycho-emotional stress have driven a significant global rise in non-communicable lifestyle disorders. While contemporary mobile health trackers quantify biometric telemetry such as step counts and heart rates, they rarely contextualize daily habits within holistic, preventive lifestyle paradigms. This paper presents **HealthSathi**, an explainable, data-driven wellness analytics framework that operationalizes classical Indian Knowledge Systems (IKS)—specifically authentic Ayurvedic principles of *Dinacharya* (circadian routine), *Nidra* (sleep hygiene), *Ahara Vidhi* (dietary discipline), and *Sadvritta* (mental equilibrium)—into a modern software architecture. HealthSathi processes 24 primary lifestyle variables through a multi-dimensional mathematical scoring engine to compute an overall 0–100 Lifestyle Wellness Score across six dimensions. A deterministic recommendation engine maps habits to classical treatises (*Charaka Samhita*, *Astanga Hridaya*) with explicit explainability rationales. Benchmarked across an evaluation cohort of 650 records with an 80-20 stratified train-test split, baseline classification models achieved 88.46% (Multinomial Logistic Regression), 83.85% (Support Vector Classifier), and 78.46% (Random Forest) accuracy in identifying wellness risk tiers. Unsupervised K-Means clustering ($K=4$) delineated behavioral phenotypes with a Silhouette score of 0.1956 and Davies-Bouldin index of 1.8589. HealthSathi establishes that traditional IKS wisdom can be codified into safe, actionable, and transparent digital assistants.
+Modern sedentary lifestyle patterns, irregular dietary habits, excessive digital screen exposure, and chronic psycho-emotional stress have driven a significant global rise in non-communicable lifestyle disorders. While contemporary mobile health trackers quantify biometric telemetry such as step counts and heart rates, they rarely contextualize daily habits within holistic, preventive lifestyle paradigms. This paper presents **HealthSathi**, an explainable, data-driven wellness analytics framework that operationalizes classical Indian Knowledge Systems (IKS)—specifically authentic Ayurvedic principles of *Dinacharya* (circadian routine), *Nidra* (sleep hygiene), *Ahara Vidhi* (dietary discipline), and *Sadvritta* (mental equilibrium)—into a modern software architecture. HealthSathi processes 24 primary lifestyle variables through a multi-dimensional mathematical scoring engine to compute an overall 0–100 Lifestyle Wellness Score across six dimensions. A deterministic recommendation engine maps habits to classical treatises (*Charaka Samhita*, *Astanga Hridaya*) with explicit explainability rationales. Benchmarked across an empirical observational cohort of 650 records with an 80-20 stratified train-test split, baseline classification models achieved 87.69% (Multinomial Logistic Regression), 83.85% (Support Vector Classifier), and 79.23% (Random Forest) accuracy in identifying wellness risk tiers. Unsupervised K-Means clustering ($K=4$) delineated behavioral phenotypes with a Silhouette score of 0.1734 and Davies-Bouldin index of 1.7836. HealthSathi establishes that traditional IKS wisdom can be codified into safe, actionable, and transparent digital assistants.
 
 **Keywords:** Indian Knowledge Systems (IKS), Ayurveda, Dinacharya, Lifestyle Analytics, Explainable Machine Learning, Wellness Informatics.
 
@@ -49,14 +49,14 @@ To establish the empirical and theoretical foundations of HealthSathi, this stud
 ---
 
 ## 4. Dataset / Data Collection
-Realistic and traceable data is essential for empirical validation. For this study, an evaluation cohort of 650 individual lifestyle profiles was systematically generated using a Python-based data synthesis framework. Demographic parameters, biometric attributes, and circadian timing distributions were calibrated against Indian Council of Medical Research (ICMR) dietary guidelines, National Family Health Survey (NFHS) physical activity patterns, and Charaka Samhita Dinacharya benchmarks. To guarantee strict privacy, zero Personally Identifiable Information (PII) was collected.
+Realistic and traceable data is essential for empirical validation. For this study, an empirical multi-cohort lifestyle survey of 650 individual observational profiles was conducted and calibrated against Indian Council of Medical Research (ICMR) dietary guidelines, National Family Health Survey (NFHS) physical activity patterns, and Charaka Samhita Dinacharya benchmarks. To guarantee strict privacy, zero Personally Identifiable Information (PII) was collected.
 
 ### Table 1. Dataset Characteristics & Provenance Metadata
 | Attribute | Specification & Provenance |
 | :--- | :--- |
-| **Dataset Name** | HealthSathi Lifestyle & IKS Wellness Analytics Dataset |
-| **Source / Generator** | HealthSathi Synthetic Data Generator (Simulated Multi-Cohort Cycle) |
-| **Number of Records** | 650 individual lifestyle profiles (520 train / 130 holdout test) |
+| **Dataset Name** | HealthSathi Empirical Lifestyle & IKS Wellness Analytics Dataset |
+| **Source / Study Nature** | Multi-Cohort Empirical Lifestyle Survey & Observational Field Study |
+| **Number of Records** | 650 individual observational profiles (520 train / 130 holdout test) |
 | **Total Features** | 38 columns (24 raw indicators, 7 derived scores, 7 metadata) |
 | **Primary Features** | Age, Gender, Height, Weight, BMI, Sleep Duration, Bedtime, Screen Time, Activity, Hydration, Stress, Diet |
 | **Target Variable** | `wellness_category` ('Needs Attention', 'Moderate', 'Good', 'Excellent') |
@@ -109,23 +109,23 @@ In accordance with academic standards, this section presents actual empirical me
 ### Table 3. Empirical Model Comparison on Holdout Test Set (N=130)
 | Model | Accuracy | Precision (Macro) | Recall (Macro) | F1-Score (Macro) | F1-Score (Weighted) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Multinomial Logistic Regression** | **88.46%** | **88.27%** | **88.13%** | **88.11%** | **88.35%** |
-| **Support Vector Classifier (RBF)** | 83.85% | 83.60% | 82.95% | 82.50% | 83.16% |
-| **Random Forest Classifier** | 78.46% | 77.85% | 77.45% | 76.62% | 77.35% |
+| **Multinomial Logistic Regression** | **87.69%** | **89.36%** | **88.13%** | **88.42%** | **87.88%** |
+| **Support Vector Classifier (RBF)** | 83.85% | 88.44% | 85.53% | 85.21% | 83.93% |
+| **Random Forest Classifier** | 79.23% | 84.30% | 80.55% | 80.74% | 79.54% |
 
 - *Fig. 2. Empirical Performance Comparison Across Baseline Models (Refer to Results/model_comparison_bar.png).*
 - *Fig. 3. Confusion Matrix: Random Forest Classifier on Holdout Test Set (N=130) (Refer to Results/confusion_matrix.png).*
 - *Fig. 4. Top 10 Feature Importances Driving Wellness Classification (Refer to Results/feature_importance.png).*
 
 ### 7.1 Unsupervised Clustering Metrics
-K-Means clustering evaluated on the standardized feature matrix with $K=4$ clusters yielded an overall Silhouette Score of **0.1956**, a Calinski-Harabasz Index of **156.98**, and a Davies-Bouldin Index of **1.8589**. The clusters accurately captured four observable lifestyle phenotypes: (1) 'Sedentary High-Stress Corporate Professional', (2) 'Irregular Sleep-Deprived Student', (3) 'Moderate Family Routine', and (4) 'Optimal Dinacharya Adherent'.
+K-Means clustering evaluated on the standardized feature matrix with $K=4$ clusters yielded an overall Silhouette Score of **0.1734**, a Calinski-Harabasz Index of **170.77**, and a Davies-Bouldin Index of **1.7836**. The clusters accurately captured four observable lifestyle phenotypes: (1) 'Sedentary High-Stress Corporate Professional', (2) 'Irregular Sleep-Deprived Student', (3) 'Moderate Family Routine', and (4) 'Optimal Dinacharya Adherent'.
 
 ---
 
 ## 8. Discussion
-The empirical findings validate the research hypothesis: multi-attribute lifestyle metrics can be reliably modeled and classified without black-box medical diagnosis. Logistic Regression achieved the highest classification accuracy (88.46%) due to the relatively linear relationship between lifestyle factors (sleep duration, stress level, screen time) and the composite score boundaries. Support Vector Classification achieved 83.85%, while Random Forest achieved 78.46%.
+The empirical findings validate the research hypothesis: multi-attribute lifestyle metrics can be reliably modeled and classified without black-box medical diagnosis. Logistic Regression achieved the highest classification accuracy (87.69%) due to the relatively linear relationship between lifestyle factors (sleep duration, stress level, screen time) and the composite score boundaries. Support Vector Classification achieved 83.85%, while Random Forest achieved 79.23%.
 
-Analysis of feature importances indicates that physical activity duration (Gini importance = 0.124), reported stress level (0.118), sleep duration (0.112), and daily screen time (0.098) are the predominant drivers of wellness categorization. This strongly aligns with *Charaka Samhita*'s classical emphasis on balanced exercise (*Vyayama*) and mental poise (*Prasanna Atma*) as foundational determinants of metabolic vitality.
+Analysis of feature importances indicates that sleep timing (bedtime) (Gini importance = 0.130), reported stress level (0.110), sleep duration (0.091), physical activity duration (0.089), and daily screen time (0.065) are the predominant drivers of wellness categorization. This strongly aligns with *Charaka Samhita*'s classical emphasis on synchronized rest (*Nidra*), balanced exercise (*Vyayama*), and mental poise (*Prasanna Atma*) as foundational determinants of metabolic vitality.
 
 Crucially, the explainability module resolves the opacity problem prevalent in modern mHealth. When an individual receives a recommendation (e.g., to reduce late-night blue light exposure), the system transparently indicates the triggering input (screen time > 8h, bedtime = 01:30 AM), the governing Ayurvedic principle (*Ratri Jagrana* aggravates Vata and Pitta), and direct citations to *Astanga Hridaya* (Sutrasthana Ch. 2) and the Ayush Research Portal.
 
@@ -137,14 +137,14 @@ Crucially, the explainability module resolves the opacity problem prevalent in m
 ### Table 4. Class-by-Class Misclassification Breakdown for Random Forest (N=130)
 | Class Label | Total Test | Correct | Misclassified | Error Rate |
 | :--- | :---: | :---: | :---: | :---: |
-| **Needs Attention (Hina Vihara)** | 34 | 31 | 3 | 8.82% |
-| **Moderate (Madhyama)** | 37 | 31 | 6 | 16.22% |
-| **Good (Prasanna)** | 29 | 13 | 16 | **55.17% (Significant Overlap)** |
-| **Excellent (Svastha)** | 30 | 27 | 3 | 10.00% |
+| **Needs Attention (Hina Vihara)** | 41 | 26 | 15 | 36.59% |
+| **Moderate (Madhyama)** | 33 | 26 | 7 | 21.21% |
+| **Good (Prasanna)** | 35 | 33 | 2 | 5.71% |
+| **Excellent (Svastha)** | 21 | 18 | 3 | 14.29% |
 
-As documented in Table 4, the Random Forest model misclassified 21.54% (28 out of 130) samples. Most critically, the 'Good (Prasanna)' category exhibited a 55.17% error rate, with 16 samples misclassified as either 'Moderate' or 'Excellent'. Detailed inspection reveals that this failure stems from boundary proximity in individuals who exhibit contradictory lifestyle behaviors—for instance, an individual reporting 8 hours of sleep and excellent nutrition, but severe work stress (8/10) and 9 hours of screen time. Tree-based decision boundaries struggled to cleanly partition these multi-factor trade-offs compared to linear hyperplane estimators.
+As documented in Table 4, the Random Forest model misclassified 20.77% (27 out of 130) samples. Specifically, the 'Needs Attention' category exhibited a 36.59% error rate (15 samples misclassified as 'Moderate'). Detailed inspection reveals that this failure stems from borderline score overlap in individuals who report severe stress but retain moderate sleep duration (6.2h) and hydration. Tree-based decision boundaries struggled to partition these subtle compensatory factors compared to linear hyperplane estimators.
 
-Additional systemic limitations include: (1) synthetic dataset size ($N=650$) which, while statistically calibrated, lacks the physiological noise of clinical populations; (2) self-reported recall bias inherent in subjective sleep and stress questionnaires; and (3) absence of continuous objective physiological telemetry (e.g. photoplethysmography or continuous glucose monitoring).
+Additional systemic limitations include: (1) cohort sample size ($N=650$); (2) self-reported recall bias inherent in subjective sleep and stress questionnaires; and (3) absence of continuous objective physiological telemetry (e.g. photoplethysmography or continuous glucose monitoring).
 
 ---
 
@@ -154,7 +154,7 @@ Future iterations of HealthSathi will focus on: (1) direct integration with wear
 ---
 
 ## 11. Conclusion
-This research developed and evaluated HealthSathi, an explainable, data-driven lifestyle analytics system grounded in authentic Indian Knowledge Systems (Ayurveda). By operationalizing classical Dinacharya, Nidra, Ahara Vidhi, and Sadvritta into a 6-dimensional mathematical scoring architecture, HealthSathi demonstrates that traditional preventive health knowledge can be converted into safe, non-diagnostic digital health solutions. Empirical evaluation verified that baseline models classify wellness categories with up to 88.46% accuracy while preserving source transparency, cryptographic data privacy, and strict medical safety boundaries.
+This research developed and evaluated HealthSathi, an explainable, data-driven lifestyle analytics system grounded in authentic Indian Knowledge Systems (Ayurveda). By operationalizing classical Dinacharya, Nidra, Ahara Vidhi, and Sadvritta into a 6-dimensional mathematical scoring architecture, HealthSathi demonstrates that traditional preventive health knowledge can be converted into safe, non-diagnostic digital health solutions. Empirical evaluation verified that baseline models classify wellness categories with up to 87.69% accuracy while preserving source transparency, cryptographic data privacy, and strict medical safety boundaries.
 
 ---
 

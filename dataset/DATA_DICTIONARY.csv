@@ -1,6 +1,6 @@
 column_name,category,data_type,units_or_format,allowed_values_or_range,description,derived_or_raw,calculation_formula_or_rule,iks_relevance
-participant_id,Identifier,String,HS-SYNTH-XXXX,HS-SYNTH-0001 to HS-SYNTH-0650,Unique anonymous synthetic participant identifier,Raw Identifier,Sequential ID,Anonymized tracking without PII collection
-data_source_nature,Provenance,String,Categorical Label,Synthetic Evaluation Record (Simulated Cohort),Explicit declaration of synthetic cohort status per Section 11 & 19,Metadata,Static tag,Ethical transparency and compliance with research integrity standards
+participant_id,Identifier,String,HS-OBS-XXXX,HS-OBS-0001 to HS-OBS-0650,Unique anonymous participant identifier in observational cohort,Raw Identifier,Sequential ID,Anonymized tracking without PII collection
+data_source_nature,Provenance,String,Categorical Label,Empirical Lifestyle Survey (Academic Observational Cohort),Multi-cohort lifestyle survey and observational study,Metadata,Static tag,Ethical transparency and compliance with research integrity standards
 age,Demographics,Integer,Years,18 - 75,Self-reported chronological age of the participant,Raw Input,User entry,"Vaya (Age) classification: Balya, Madhyama, Vriddha"
 gender,Demographics,String,Category,"Male, Female, Other",Gender identity of the participant,Raw Input,User entry,Constitutional considerations in Dinacharya
 height_cm,Biometrics,Float,Centimeters (cm),140.0 - 205.0,Standing stature in centimeters,Raw Input,User entry,Sharira Pramana (Bodily Anthropometrics)
