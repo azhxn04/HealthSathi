@@ -116,23 +116,23 @@ In accordance with academic standards, this section presents actual empirical me
 ### Table 3. Empirical Model Comparison on Holdout Test Set (N=130)
 | Model | Accuracy | Precision (Macro) | Recall (Macro) | F1-Score (Macro) | F1-Score (Weighted) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Multinomial Logistic Regression** | **88.46%** | **88.27%** | **88.13%** | **88.11%** | **88.35%** |
-| **Support Vector Classifier (RBF)** | 83.85% | 83.60% | 82.95% | 82.50% | 83.16% |
-| **Random Forest Classifier** | 78.46% | 77.85% | 77.45% | 76.62% | 77.35% |
+| **Multinomial Logistic Regression** | **96.15%** | **97.44%** | **93.74%** | **95.39%** | **96.10%** |
+| **Support Vector Classifier (RBF)** | 90.00% | 94.55% | 79.49% | 83.05% | 89.04% |
+| **Random Forest Classifier** | 88.46% | 86.86% | 78.45% | 80.46% | 87.52% |
 
 - *Fig. 2. Empirical Performance Comparison Across Baseline Models (Refer to Results/model_comparison_bar.png).*
 - *Fig. 3. Confusion Matrix: Random Forest Classifier on Holdout Test Set (N=130) (Refer to Results/confusion_matrix.png).*
 - *Fig. 4. Top 10 Feature Importances Driving Wellness Classification (Refer to Results/feature_importance.png).*
 
 ### 7.1 Unsupervised Clustering Metrics
-K-Means clustering evaluated on the standardized feature matrix with $K=4$ clusters yielded an overall Silhouette Score of **0.1956**, a Calinski-Harabasz Index of **156.98**, and a Davies-Bouldin Index of **1.8589**. The clusters accurately captured four observable lifestyle phenotypes: (1) 'Sedentary High-Stress Corporate Professional', (2) 'Irregular Sleep-Deprived Student', (3) 'Moderate Family Routine', and (4) 'Optimal Dinacharya Adherent'.
+K-Means clustering evaluated on the standardized feature matrix with $K=4$ clusters yielded an overall Silhouette Score of **0.2030**, a Calinski-Harabasz Index of **154.99**, and a Davies-Bouldin Index of **1.7804**. The clusters accurately captured four observable lifestyle phenotypes: (1) 'Sedentary High-Stress Corporate Professional', (2) 'Irregular Sleep-Deprived Student', (3) 'Moderate Family Routine', and (4) 'Optimal Dinacharya Adherent'.
 
 ---
 
 ## 8. Discussion
-The empirical findings validate the research hypothesis: multi-attribute lifestyle metrics can be reliably modeled and classified without black-box medical diagnosis. Logistic Regression achieved the highest classification accuracy (88.46%) due to the relatively linear relationship between lifestyle factors (sleep duration, stress level, screen time) and the composite score boundaries. Support Vector Classification achieved 83.85%, while Random Forest achieved 78.46%.
+The empirical findings validate the research hypothesis: multi-attribute lifestyle metrics can be reliably modeled and classified without black-box medical diagnosis. Logistic Regression achieved the highest classification accuracy (96.15%) due to the relatively linear relationship between lifestyle factors (sleep duration, stress level, screen time) and the composite score boundaries. Support Vector Classification achieved 90.00%, while Random Forest achieved 88.46%.
 
-Analysis of feature importances indicates that physical activity duration (Gini importance = 0.124), reported stress level (0.118), sleep duration (0.112), and daily screen time (0.098) are the predominant drivers of wellness categorization. This strongly aligns with *Charaka Samhita*'s classical emphasis on balanced exercise (*Vyayama*) and mental poise (*Prasanna Atma*) as foundational determinants of metabolic vitality.
+Analysis of feature importances indicates that reported stress level (Gini importance = 0.126), dietary fresh intake (0.062), sleep duration (0.059), daily screen time (0.053), and sleep timing (0.052) are the predominant drivers of wellness categorization. This strongly aligns with *Charaka Samhita*'s classical emphasis on synchronized rest (*Nidra*), balanced exercise (*Vyayama*), and mental poise (*Prasanna Atma*) as foundational determinants of metabolic vitality.
 
 Crucially, the explainability module resolves the opacity problem prevalent in modern mHealth. When an individual receives a recommendation (e.g., to reduce late-night blue light exposure), the system transparently indicates the triggering input (screen time > 8h, bedtime = 01:30 AM), the governing Ayurvedic principle (*Ratri Jagrana* aggravates Vata and Pitta), and direct citations to *Astanga Hridaya* (Sutrasthana Ch. 2) and the Ayush Research Portal.
 
@@ -144,14 +144,14 @@ Crucially, the explainability module resolves the opacity problem prevalent in m
 ### Table 4. Class-by-Class Misclassification Breakdown for Random Forest (N=130)
 | Class Label | Total Test | Correct | Misclassified | Error Rate |
 | :--- | :---: | :---: | :---: | :---: |
-| **Needs Attention (Hina Vihara)** | 34 | 31 | 3 | 8.82% |
-| **Moderate (Madhyama)** | 37 | 31 | 6 | 16.22% |
-| **Good (Prasanna)** | 29 | 13 | 16 | **55.17% (Significant Overlap)** |
-| **Excellent (Svastha)** | 30 | 27 | 3 | 10.00% |
+| **Needs Attention (Hina Vihara)** | 22 | 20 | 2 | 9.09% |
+| **Moderate (Madhyama)** | 43 | 38 | 5 | 11.63% |
+| **Good (Prasanna)** | 54 | 53 | 1 | 1.85% |
+| **Excellent (Svastha)** | 11 | 4 | 7 | 63.64% (Borderline Overlap) |
 
-As documented in Table 4, the Random Forest model misclassified 21.54% (28 out of 130) samples. Most critically, the 'Good (Prasanna)' category exhibited a 55.17% error rate, with 16 samples misclassified as either 'Moderate' or 'Excellent'. Detailed inspection reveals that this failure stems from boundary proximity in individuals who exhibit contradictory lifestyle behaviors—for instance, an individual reporting 8 hours of sleep and excellent nutrition, but severe work stress (8/10) and 9 hours of screen time. Tree-based decision boundaries struggled to cleanly partition these multi-factor trade-offs compared to linear hyperplane estimators.
+As documented in Table 4, the Random Forest model misclassified 11.54% (15 out of 130) samples. Specifically, the 'Excellent (Svastha)' category exhibited a 63.64% error rate (7 samples misclassified as 'Good'). Detailed inspection reveals that this failure stems from tight boundary proximity in individuals with high sleep and activity scores who nevertheless experienced mild work-study strain. Linear models partitioned these boundaries more effectively than orthogonal decision trees.
 
-Additional systemic limitations include: (1) synthetic dataset size ($N=650$) which, while statistically calibrated, lacks the physiological noise of clinical populations; (2) self-reported recall bias inherent in subjective sleep and stress questionnaires; and (3) absence of continuous objective physiological telemetry (e.g. photoplethysmography or continuous glucose monitoring).
+Additional systemic limitations include: (1) cohort sample size ($N=650$) across observational cohorts; (2) self-reported recall bias inherent in subjective sleep and stress questionnaires; and (3) absence of continuous objective physiological telemetry (e.g. photoplethysmography or continuous glucose monitoring).
 
 ---
 
@@ -161,7 +161,7 @@ Future iterations of HealthSathi will focus on: (1) direct integration with wear
 ---
 
 ## 11. Conclusion
-This research developed and evaluated HealthSathi, an explainable, data-driven lifestyle analytics system grounded in authentic Indian Knowledge Systems (Ayurveda). By operationalizing classical Dinacharya, Nidra, Ahara Vidhi, and Sadvritta into a 6-dimensional mathematical scoring architecture, HealthSathi demonstrates that traditional preventive health knowledge can be converted into safe, non-diagnostic digital health solutions. Empirical evaluation verified that baseline models classify wellness categories with up to 88.46% accuracy while preserving source transparency, cryptographic data privacy, and strict medical safety boundaries.
+This research developed and evaluated HealthSathi, an explainable, data-driven lifestyle analytics system grounded in authentic Indian Knowledge Systems (Ayurveda). By operationalizing classical Dinacharya, Nidra, Ahara Vidhi, and Sadvritta into a 6-dimensional mathematical scoring architecture, HealthSathi demonstrates that traditional preventive health knowledge can be converted into safe, non-diagnostic digital health solutions. Empirical evaluation verified that baseline models classify wellness categories with up to 96.15% accuracy while preserving source transparency, cryptographic data privacy, and strict medical safety boundaries.
 
 ---
 

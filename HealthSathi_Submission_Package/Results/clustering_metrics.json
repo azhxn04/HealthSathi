@@ -1,6 +1,6 @@
 {
   "Optimal_Clusters_K": 4,
-  "Silhouette_Score": 0.1734,
-  "Calinski_Harabasz_Index": 170.77,
-  "Davies_Bouldin_Index": 1.7836
+  "Silhouette_Score": 0.203,
+  "Calinski_Harabasz_Index": 154.99,
+  "Davies_Bouldin_Index": 1.7804
 }

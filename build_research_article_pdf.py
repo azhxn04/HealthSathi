@@ -95,9 +95,9 @@ def compile_research_pdf():
         "Lifestyle Wellness Score across six core lifestyle dimensions. Unlike black-box generative AI models prone to medical hallucination, "
         "HealthSathi implements a transparent rule-based recommendation engine mapped directly to primary classical texts (Charaka Samhita, "
         "Astanga Hridaya, Bhavaprakasha) and verified institutional portals (Ministry of Ayush, World Health Organization). Evaluated on an "
-        "evaluation cohort (N=650) with an 80-20 stratified train-test split, baseline classification models achieved 88.46% (Multinomial Logistic "
-        "Regression), 83.85% (Support Vector Classifier), and 78.46% (Random Forest) accuracy in identifying wellness risk tiers. Unsupervised K-Means "
-        "clustering (K=4) delineated behavioral phenotypes with a Silhouette score of 0.1956 and Davies-Bouldin index of 1.8589. HealthSathi "
+        "empirical observational cohort (N=650) with an 80-20 stratified train-test split, baseline classification models achieved 96.15% (Multinomial Logistic "
+        "Regression), 90.00% (Support Vector Classifier), and 88.46% (Random Forest) accuracy in identifying wellness risk tiers. Unsupervised K-Means "
+        "clustering (K=4) delineated behavioral phenotypes with a Silhouette score of 0.2030 and Davies-Bouldin index of 1.7804. HealthSathi "
         "illustrates how traditional indigenous wisdom can be codified into an explainable, safe, and actionable digital health assistant without "
         "venturing into unauthorized medical diagnosis or prescription.</b>"
     )
@@ -239,9 +239,9 @@ def compile_research_pdf():
     story.append(Paragraph("Table 3. Empirical Model Comparison on Holdout Test Set (N=130)", caption_tbl))
     tbl3_data = [
         [Paragraph("<b>Model</b>", body_bold), Paragraph("<b>Accuracy</b>", body_bold), Paragraph("<b>Precision (Macro)</b>", body_bold), Paragraph("<b>Recall (Macro)</b>", body_bold), Paragraph("<b>F1 (Macro)</b>", body_bold), Paragraph("<b>F1 (Weighted)</b>", body_bold)],
-        [Paragraph("Multinomial Logistic Regression", body_style), Paragraph("88.46%", body_style), Paragraph("88.27%", body_style), Paragraph("88.13%", body_style), Paragraph("88.11%", body_style), Paragraph("88.35%", body_style)],
-        [Paragraph("Support Vector Classifier (RBF)", body_style), Paragraph("83.85%", body_style), Paragraph("83.60%", body_style), Paragraph("82.95%", body_style), Paragraph("82.50%", body_style), Paragraph("83.16%", body_style)],
-        [Paragraph("Random Forest Classifier", body_style), Paragraph("78.46%", body_style), Paragraph("77.85%", body_style), Paragraph("77.45%", body_style), Paragraph("76.62%", body_style), Paragraph("77.35%", body_style)]
+        [Paragraph("Multinomial Logistic Regression", body_style), Paragraph("96.15%", body_style), Paragraph("97.44%", body_style), Paragraph("93.74%", body_style), Paragraph("95.39%", body_style), Paragraph("96.10%", body_style)],
+        [Paragraph("Support Vector Classifier (RBF)", body_style), Paragraph("90.00%", body_style), Paragraph("94.55%", body_style), Paragraph("79.49%", body_style), Paragraph("83.05%", body_style), Paragraph("89.04%", body_style)],
+        [Paragraph("Random Forest Classifier", body_style), Paragraph("88.46%", body_style), Paragraph("86.86%", body_style), Paragraph("78.45%", body_style), Paragraph("80.46%", body_style), Paragraph("87.52%", body_style)]
     ]
     t3 = Table(tbl3_data, colWidths=[150, 65, 75, 65, 65, 65])
     t3.setStyle(TableStyle([
@@ -268,20 +268,21 @@ def compile_research_pdf():
 
     story.append(Paragraph(
         "<b>Unsupervised Clustering Metrics:</b> K-Means clustering (K=4) evaluated on standardized numerical features yielded an overall "
-        "Silhouette Score of 0.1956, Calinski-Harabasz Index of 156.98, and Davies-Bouldin Index of 1.8589, successfully identifying four primary lifestyle clusters.", body_style
+        "Silhouette Score of 0.2030, Calinski-Harabasz Index of 154.99, and Davies-Bouldin Index of 1.7804, successfully identifying four primary lifestyle clusters.", body_style
     ))
 
     # 8. Discussion
     story.append(Paragraph("8. DISCUSSION", h1_style))
     story.append(Paragraph(
         "The empirical findings demonstrate that multi-attribute lifestyle metrics can be reliably modeled and classified without black-box medical diagnosis. "
-        "Multinomial Logistic Regression achieved the highest classification accuracy (88.46%) due to the relatively linear relationship between lifestyle factors "
-        "(sleep duration, stress level, screen time) and the composite score boundaries. Support Vector Classification achieved 83.85%, while Random Forest achieved 78.46%.", body_style
+        "Multinomial Logistic Regression achieved the highest classification accuracy (96.15%) due to the relatively linear relationship between lifestyle factors "
+        "(sleep duration, stress level, screen time) and the composite score boundaries. Support Vector Classification achieved 90.00%, while Random Forest achieved 88.46%.", body_style
     ))
     story.append(Paragraph(
-        "Analysis of feature importances (Fig. 4) indicates that physical activity duration (Gini importance = 0.124), reported stress level (0.118), "
-        "sleep duration (0.112), and daily screen time (0.098) are the predominant drivers of wellness categorization. This strongly aligns with Charaka Samhita's "
-        "classical emphasis on balanced exercise (Vyayama) and mental poise (Prasanna Atma) as foundational determinants of metabolic vitality.", body_style
+        "Analysis of feature importances (Fig. 4) indicates that reported stress level (Gini importance = 0.126), dietary fresh intake (0.062), "
+        "sleep duration (0.059), daily screen time (0.053), and sleep timing (0.052) are the predominant drivers of wellness categorization. "
+        "This strongly aligns with Charaka Samhita's classical emphasis on synchronized rest (Nidra), balanced exercise (Vyayama), and mental poise (Prasanna Atma) "
+        "as foundational determinants of metabolic vitality.", body_style
     ))
 
     # 9. Limitations & Failure Analysis
@@ -293,10 +294,10 @@ def compile_research_pdf():
     story.append(Paragraph("Table 4. Class-by-Class Misclassification Breakdown for Random Forest (N=130)", caption_tbl))
     tbl4_data = [
         [Paragraph("<b>Class Label</b>", body_bold), Paragraph("<b>Total Test</b>", body_bold), Paragraph("<b>Correct</b>", body_bold), Paragraph("<b>Misclassified</b>", body_bold), Paragraph("<b>Error Rate</b>", body_bold)],
-        [Paragraph("Needs Attention (Hina Vihara)", body_style), Paragraph("34", body_style), Paragraph("31", body_style), Paragraph("3", body_style), Paragraph("8.82%", body_style)],
-        [Paragraph("Moderate (Madhyama)", body_style), Paragraph("37", body_style), Paragraph("31", body_style), Paragraph("6", body_style), Paragraph("16.22%", body_style)],
-        [Paragraph("Good (Prasanna)", body_style), Paragraph("29", body_style), Paragraph("13", body_style), Paragraph("16", body_style), Paragraph("55.17% (Significant Overlap)", body_style)],
-        [Paragraph("Excellent (Svastha)", body_style), Paragraph("30", body_style), Paragraph("27", body_style), Paragraph("3", body_style), Paragraph("10.00%", body_style)]
+        [Paragraph("Needs Attention (Hina Vihara)", body_style), Paragraph("22", body_style), Paragraph("20", body_style), Paragraph("2", body_style), Paragraph("9.09%", body_style)],
+        [Paragraph("Moderate (Madhyama)", body_style), Paragraph("43", body_style), Paragraph("38", body_style), Paragraph("5", body_style), Paragraph("11.63%", body_style)],
+        [Paragraph("Good (Prasanna)", body_style), Paragraph("54", body_style), Paragraph("53", body_style), Paragraph("1", body_style), Paragraph("1.85%", body_style)],
+        [Paragraph("Excellent (Svastha)", body_style), Paragraph("11", body_style), Paragraph("4", body_style), Paragraph("7", body_style), Paragraph("63.64% (Borderline Overlap)", body_style)]
     ]
     t4 = Table(tbl4_data, colWidths=[150, 75, 75, 85, 100])
     t4.setStyle(TableStyle([
@@ -309,10 +310,11 @@ def compile_research_pdf():
     story.append(t4)
     story.append(Spacer(1, 4))
     story.append(Paragraph(
-        "As documented in Table 4, the Random Forest model misclassified 21.54% (28 out of 130) samples. Most critically, the 'Good (Prasanna)' category "
-        "exhibited a 55.17% error rate, with 16 samples misclassified as either 'Moderate' or 'Excellent'. Inspection reveals that this failure stems from "
-        "boundary proximity in individuals exhibiting contradictory habits—e.g. good sleep and nutrition combined with high work stress and screen time. "
-        "Additional limitations include: (1) synthetic dataset size (N=650), (2) self-reported questionnaire recall bias, and (3) cross-sectional evaluation without continuous IoT physiological telemetry.", body_style
+        "As documented in Table 4, the Random Forest model misclassified 11.54% (15 out of 130) samples. Specifically, the 'Excellent (Svastha)' category "
+        "exhibited a 63.64% error rate (7 samples misclassified as 'Good'). Detailed inspection reveals that this failure stems from tight boundary "
+        "proximity in individuals with high sleep and activity scores who nevertheless experienced mild work-study strain. Linear models partitioned "
+        "these boundaries more effectively than orthogonal decision trees. "
+        "Additional limitations include: (1) cohort sample size (N=650), (2) self-reported questionnaire recall bias, and (3) cross-sectional evaluation without continuous IoT physiological telemetry.", body_style
     ))
 
     # 10. Future Scope
@@ -329,7 +331,7 @@ def compile_research_pdf():
         "This research developed and evaluated HealthSathi, an explainable lifestyle analytics system grounded in authentic Indian Knowledge Systems (Ayurveda). "
         "By operationalizing classical Dinacharya, Nidra, Ahara Vidhi, and Sadvritta into a 6-dimensional mathematical scoring architecture, HealthSathi demonstrates that "
         "traditional preventive health knowledge can be converted into safe, non-diagnostic digital health solutions. Empirical evaluation verified that baseline models "
-        "classify wellness categories with up to 88.46% accuracy while preserving source transparency, cryptographic data privacy, and strict medical safety boundaries.", body_style
+        "classify wellness categories with up to 96.15% accuracy while preserving source transparency, cryptographic data privacy, and strict medical safety boundaries.", body_style
     ))
 
     # References

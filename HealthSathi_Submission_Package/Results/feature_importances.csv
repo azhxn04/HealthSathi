@@ -1,36 +1,33 @@
 Feature,Importance
-sleep_time_dec,0.1301775152365842
-stress_level,0.10977986457247965
-sleep_duration_hrs,0.09051209127841667
-physical_activity_min,0.08917087555315126
-screen_time_hrs,0.06499911716588161
-fruit_veg_intake_Low,0.06374494329726992
-outdoor_time_min,0.056560230619014155
-processed_food_freq_Low,0.04016444774108613
-water_intake_liters,0.039589183318403824
-breakfast_regular_True,0.0325015797056471
-meal_regularity_Regular,0.029404742780932466
-work_study_hrs,0.02595448507681085
-wake_up_time_dec,0.022934075341645856
-caffeine_freq_Low,0.022810056341780384
-bmi,0.02128876325810623
-meal_timing_consistency_Regular,0.020787595003121728
-age,0.01795501801231683
-weight_kg,0.017641614462726697
-processed_food_freq_Medium,0.017206204660521057
-height_cm,0.013901646797333325
-relaxation_activity_True,0.01340355822727221
-fruit_veg_intake_Medium,0.01126201008183509
-caffeine_freq_Medium,0.008504000730930885
-sleep_quality_Poor,0.007423076457028902
-sleep_quality_Moderate,0.006411535658381426
-mood_Neutral,0.00630855727934948
-mood_Low,0.003918144919937169
-occupation_Working Professional (IT/Corporate),0.0029266089722164274
-occupation_Self-Employed / Business,0.002536615938145758
-gender_Male,0.0024918164302360117
-occupation_Healthcare Worker,0.002445169869923404
-occupation_Student,0.0023537381773945914
-occupation_Homemaker,0.0022149700359921968
-occupation_Freelancer / Creative,0.0005673365480024804
-gender_Other,0.00014881045012403235
+stress_level,0.1255782743392645
+fruit_veg_intake_Low,0.06166148833904862
+sleep_duration_hrs,0.05888228410188935
+screen_time_hrs,0.05332563096769816
+sleep_time_dec,0.05189604382589019
+age,0.04829755180969175
+outdoor_time_min,0.046866697900962685
+mood_Low,0.0437716301318424
+physical_activity_min,0.04350995148790876
+meal_regularity_Regular,0.04198354629583387
+wake_up_time_dec,0.04170929942088558
+work_study_hrs,0.04134720732480317
+processed_food_freq_Medium,0.03200535632649035
+sleep_quality_Moderate,0.03199846634497801
+meal_timing_consistency_Regular,0.02975202644989151
+bmi,0.029409324681368792
+water_intake_liters,0.02698171604992764
+height_cm,0.025054736400773474
+processed_food_freq_Low,0.024246565460132406
+weight_kg,0.022346604703752552
+fruit_veg_intake_Medium,0.018864519932045257
+caffeine_freq_Medium,0.017287918604439345
+sleep_quality_Poor,0.015898770144455947
+mood_Neutral,0.01525203041672552
+breakfast_regular_True,0.0131168183326174
+relaxation_activity_True,0.007523144900267992
+occupation_Student,0.007472292639657521
+caffeine_freq_Low,0.007188088106564738
+occupation_Healthcare Worker,0.005476452342477198
+gender_Male,0.005055781236824665
+occupation_Working Professional (IT/Corporate),0.004032207560967825
+occupation_Self-Employed / Business,0.0022075734199228157

@@ -1,30 +1,30 @@
 [
   {
     "Class": "Needs Attention (Hina Vihara)",
-    "Total_Samples": 41,
-    "Correct": 26,
-    "Misclassified": 15,
-    "Class_Error_Rate": 0.3659
+    "Total_Samples": 22,
+    "Correct": 20,
+    "Misclassified": 2,
+    "Class_Error_Rate": 0.0909
   },
   {
     "Class": "Moderate (Madhyama)",
-    "Total_Samples": 33,
-    "Correct": 26,
-    "Misclassified": 7,
-    "Class_Error_Rate": 0.2121
+    "Total_Samples": 43,
+    "Correct": 38,
+    "Misclassified": 5,
+    "Class_Error_Rate": 0.1163
   },
   {
     "Class": "Good (Prasanna)",
-    "Total_Samples": 35,
-    "Correct": 33,
-    "Misclassified": 2,
-    "Class_Error_Rate": 0.0571
+    "Total_Samples": 54,
+    "Correct": 53,
+    "Misclassified": 1,
+    "Class_Error_Rate": 0.0185
   },
   {
     "Class": "Excellent (Svastha)",
-    "Total_Samples": 21,
-    "Correct": 18,
-    "Misclassified": 3,
-    "Class_Error_Rate": 0.1429
+    "Total_Samples": 11,
+    "Correct": 4,
+    "Misclassified": 7,
+    "Class_Error_Rate": 0.6364
   }
 ]

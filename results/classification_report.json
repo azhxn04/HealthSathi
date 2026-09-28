@@ -1,39 +1,39 @@
 {
   "Needs Attention (Hina Vihara)": {
-    "precision": 1.0,
-    "recall": 0.6341463414634146,
-    "f1-score": 0.7761194029850746,
-    "support": 41.0
+    "precision": 0.8695652173913043,
+    "recall": 0.9090909090909091,
+    "f1-score": 0.8888888888888888,
+    "support": 22.0
   },
   "Moderate (Madhyama)": {
-    "precision": 0.6046511627906976,
-    "recall": 0.7878787878787878,
-    "f1-score": 0.6842105263157895,
-    "support": 33.0
+    "precision": 0.95,
+    "recall": 0.8837209302325582,
+    "f1-score": 0.9156626506024096,
+    "support": 43.0
   },
   "Good (Prasanna)": {
-    "precision": 0.7674418604651163,
-    "recall": 0.9428571428571428,
-    "f1-score": 0.8461538461538461,
-    "support": 35.0
+    "precision": 0.8548387096774194,
+    "recall": 0.9814814814814815,
+    "f1-score": 0.9137931034482759,
+    "support": 54.0
   },
   "Excellent (Svastha)": {
-    "precision": 1.0,
-    "recall": 0.8571428571428571,
-    "f1-score": 0.9230769230769231,
-    "support": 21.0
+    "precision": 0.8,
+    "recall": 0.36363636363636365,
+    "f1-score": 0.5,
+    "support": 11.0
   },
-  "accuracy": 0.7923076923076923,
+  "accuracy": 0.8846153846153846,
   "macro avg": {
-    "precision": 0.8430232558139534,
-    "recall": 0.8055062823355507,
-    "f1-score": 0.8073901746329084,
+    "precision": 0.8686009817671809,
+    "recall": 0.7844824211103281,
+    "f1-score": 0.8045861607348935,
     "support": 130.0
   },
   "weighted avg": {
-    "precision": 0.8370304114490161,
-    "recall": 0.7923076923076923,
-    "f1-score": 0.7953834068523777,
+    "precision": 0.8841671161937642,
+    "recall": 0.8846153846153846,
+    "f1-score": 0.8751836701358929,
     "support": 130.0
   }
 }
