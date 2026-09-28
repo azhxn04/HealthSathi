@@ -1,12 +1,10 @@
 # HealthSathi: End-to-End Dataset Documentation & Provenance
-**Principal Investigators:** Azhan (Roll No: 24315A0057) & Ayan (Roll No: 24315A0056)  
-**Institution:** Indian Knowledge Systems (IKS) Collaborative Laboratory, Department of Computer Science & Engineering  
 
 ## 1. Overview of the Dataset Repository
-The `dataset/` directory contains all datasets used by the HealthSathi platform. The lifestyle dataset represents an empirical multi-cohort observational survey (N=650) calibrated against Indian Council of Medical Research (ICMR) dietary guidelines, National Family Health Survey (NFHS) physical activity patterns, and classical Charaka Samhita Dinacharya benchmarks.
+The `dataset/` directory contains all datasets used by the HealthSathi platform. In accordance with Section 11 and Section 19 of the project blueprint, the lifestyle dataset is explicitly identified as a synthetic evaluation cohort generated for prototype benchmarking.
 
 ### Files Included:
-1. `lifestyle_data.csv`: Empirical observational cohort of 650 participant records with 38 primary and derived lifestyle features.
+1. `lifestyle_data.csv`: Synthetic cohort of 650 participant records with 38 primary and derived lifestyle features.
 2. `iks_knowledge.csv`: Curated decision table containing 13 deterministic classical Ayurvedic lifestyle rules, explainability rationale, and primary source citations.
 3. `medicinal_plants.csv`: Repository of 10 foundational Ayurvedic botanicals with scientific binomials, classical attributes (*Rasa, Virya, Vipaka*), modern research citations, and safety contraindications.
 4. `sources.csv`: Institutional literature citations with clickable links (Ministry of Ayush, WHO, PubMed, classical treatises).
@@ -52,6 +50,6 @@ Unsupervised K-Means clustering ($K=4$) delineates four distinct lifestyle cohor
 ---
 
 ## 5. Ethical Guidelines & Data Privacy
-- **Zero PII Collection:** The system strictly avoids recording names, phone numbers, email addresses, or physical locations.
-- **Voluntary Demonstration Usage:** All participation adheres to academic observational protocols and informed consent.
-- **Data Governance:** De-identified participant records are managed under the Digital Personal Data Protection (DPDP) Act 2023 principles with cryptographic integrity safeguards.
+- **Zero PII Collection:** The system does not store names, phone numbers, email addresses, or physical locations.
+- **Voluntary Demonstration Usage:** Any future human sampling must adhere to institutional ethics clearance and voluntary consent.
+- **Explicit Synthetic Labeling:** Synthetic files carry internal metadata headers identifying simulated provenance.

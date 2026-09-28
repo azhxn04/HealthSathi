@@ -139,7 +139,7 @@
 
 ### 1. Overview of the `dataset/` Repository
 The `dataset/` directory contains all datasets utilized in the HealthSathi framework:
-1. `lifestyle_data.csv`: Empirical observational cohort of 650 participant records with 38 primary and derived lifestyle features.
+1. `lifestyle_data.csv`: Synthetic cohort of 650 participant records with 38 primary and derived lifestyle features.
 2. `iks_knowledge.csv`: Curated decision table containing 13 deterministic classical Ayurvedic lifestyle rules, explainability rationale, and primary source citations.
 3. `medicinal_plants.csv`: Repository of 10 foundational Ayurvedic botanicals with scientific binomials, classical attributes (*Rasa, Virya, Vipaka*), modern research citations, and safety contraindications.
 4. `sources.csv`: Indexed bibliographic metadata linking all recommendations and herbs to primary institutional literature.
